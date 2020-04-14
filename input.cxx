@@ -1352,6 +1352,10 @@ void        Gourmet_file_io(const char *infile,
                         ufout->put(target.sub("w"), ps.w);
                         ufres->put(target.sub("w"), ps.w);
 
+                        ufin->get(target.sub("z"), ps.z);
+                        ufout->put(target.sub("z"), ps.z);
+                        ufres->put(target.sub("z"), ps.z);
+
                         ufin->get(target.sub("alpha"), ps.alpha);
                         ufout->put(target.sub("alpha"), ps.alpha);
                         ufres->put(target.sub("alpha"), ps.alpha);
@@ -1390,6 +1394,10 @@ void        Gourmet_file_io(const char *infile,
                         ufin->get(target.sub("w"), ps.w);
                         ufout->put(target.sub("w"), ps.w);
                         ufres->put(target.sub("w"), ps.w);
+
+                        ufin->get(target.sub("z"), ps.z);
+                        ufout->put(target.sub("z"), ps.z);
+                        ufres->put(target.sub("z"), ps.z);
 
                         ufin->get(target.sub("alpha"), ps.alpha);
                         ufout->put(target.sub("alpha"), ps.alpha);

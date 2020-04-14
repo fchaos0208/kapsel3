@@ -525,13 +525,55 @@ void Time_evolution_hydro_OBL_fdm(double **&u, double *Pressure, double **f, Par
             Calc_Reynolds_shear_stress(ucp, Inertia_stress);
         }
 
-        if (!Fixed_particle) {  // Update of Particle Velocity
-            if (jikan.ts == 0) {
-                MD_solver_velocity_Euler_OBL(p, jikan);
-            } else {
-                MD_solver_velocity_AB2_hydro_OBL(p, jikan);
-            }
-        }
+        if (!SW_JANUS_SLIP) {
+			if (!Fixed_particle) {
+				if (jikan.ts == 0) {
+					MD_solver_velocity_Euler_OBL(p, jikan);
+				} else {
+					MD_solver_velocity_AB2_hydro_OBL(p, jikan);
+				}
+			}
+		} else { // Self-Consistent slip force
+
+			int slip_converge = 0;
+			int slip_iter = 0;
+			Make_particle_momentum_factor(u, p);
+			Update_slip_particle_velocity(p, slip_iter); // initial particle velocity for slip profile
+			while (!slip_converge) {
+				Reset_u(up);
+
+				Make_force_u_slip_particle(up, u, p, jikan);
+				Solenoidal_u(up);
+				Calc_f_slip_correct_precision(p, up, jikan); //slip force
+				Add_f_particle(up, u); //up += u
+
+									   // Update particle velocity
+				if (!Fixed_particle) {
+					if (slip_iter == 0) {
+						MD_solver_velocity_slip_iter(p, jikan, start_iter);
+					} else {
+						MD_solver_velocity_slip_iter(p, jikan, new_iter);
+					}
+				}
+				if (PINNING) {
+					Pinning(p);
+				}
+				slip_iter++;
+
+				if (Slip_particle_convergence(p) < MAX_SLIP_TOL || slip_iter == MAX_SLIP_ITER) {
+					slip_converge = 1;
+					MD_solver_velocity_slip_iter(p, jikan, end_iter);
+				} else {
+					Update_slip_particle_velocity(p, slip_iter); // use new particle velocity for new slip profile
+					MD_solver_velocity_slip_iter(p, jikan, reset_iter);
+				}
+			}//slip_convergence
+			if (slip_iter == MAX_SLIP_ITER) {
+				fprintf(stderr, "#Warning: increase MAX_SLIP_ITER (%d)\n", jikan.ts);
+			}
+
+			Swap_mem(u, up);
+		} // slip
 
         if (kBT > 0. && SW_EQ != Electrolyte) {
             Add_random_force_thermostat(p, jikan);
