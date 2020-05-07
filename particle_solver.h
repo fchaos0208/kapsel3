@@ -10,7 +10,6 @@
 #define PARTICLE_SOLVER_H
 
 #include <math.h>
-
 #include "input.h"
 #include "md_force.h"
 #include "particle_rotation_solver.h"

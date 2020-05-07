@@ -11,7 +11,6 @@
 #define INIT_PARTICLE_H
 
 #include <assert.h>
-
 #include "avs_output.h"
 #include "fluct.h"
 #include "input.h"

@@ -9,7 +9,6 @@
 #define PROFILE_H
 
 #include <math.h>
-
 #include "alloc.h"
 #include "input.h"
 #include "interaction.h"

@@ -11,12 +11,10 @@
 #include <assert.h>
 #include <stdio.h>
 #include <sys/types.h>
-
 #include <cfloat>
 #include <cstring>
 #include <iostream>
 #include <string>
-
 #include "alloc.h"
 #include "macro.h"
 #include "parameter_define.h"

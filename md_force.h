@@ -9,7 +9,6 @@
 #define MD_FORCE_H
 
 #include <assert.h>
-
 #include "input.h"
 #include "interaction.h"
 #include "make_phi.h"

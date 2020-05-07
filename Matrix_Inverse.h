@@ -2,7 +2,6 @@
 #define MI_H
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "alloc.h"
 
 inline void change_row(double **A, int i1, int i2, int n) {

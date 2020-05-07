@@ -10,7 +10,6 @@
 #define MAKE_PHI_H
 
 #include <assert.h>
-
 #include "Matrix_Inverse.h"
 #include "input.h"
 #include "operate_omega.h"

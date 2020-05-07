@@ -2,7 +2,6 @@
 #define LAD3_H
 #include <assert.h>
 #include <math.h>
-
 #include "macro.h"
 #include "parameter_define.h"
 

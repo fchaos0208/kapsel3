@@ -10,9 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <string>
-
 #include "fluid_solver.h"
 #include "input.h"
 #include "macro.h"
