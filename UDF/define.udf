@@ -163,6 +163,7 @@ constitutive_eq: {
           b: double "GL parameter (first order term)"
           d: double "penalty factor in fictitious particle domain"
           w: double "penalty factor on particle surface domain"
+          z: double "penalty factor on particle-interface domin"
           alpha: double "surface parameter on fluid-fluid surface"
           kappa: double "mobility parameter"
        }
@@ -174,6 +175,7 @@ constitutive_eq: {
          chi: double "Flory's interaction parameter (chi parameter)"
          d: double "penalty factor in fictitious particle domain"
          w: double "penalty factor on particle surface domain"
+         z: double "penalty factor on particle-interface domin"
          alpha: double "surface parameter on fluid-fluid surface"
          kappa: double "mobility parameter"
        }
@@ -241,7 +243,6 @@ constitutive_eq: {
           b: double "GL parameter (first order term)"
           d: double "penalty factor in fictitious particle domain"
           w: double "penalty factor on particle surface domain"
-          z: double "penalty factor on particle-interface domin"
           alpha: double "surface parameter on fluid-fluid surface"
           kappa: double "mobility parameter"
        }
@@ -253,7 +254,6 @@ constitutive_eq: {
          chi: double "Flory's interaction parameter (chi parameter)"
          d: double "penalty factor in fictitious particle domain"
          w: double "penalty factor on particle surface domain"
-         z: double "penalty factor on particle-interface domin"
          alpha: double "surface parameter on fluid-fluid surface"
          kappa: double "mobility parameter"
        }
